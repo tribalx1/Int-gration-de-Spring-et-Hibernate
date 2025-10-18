@@ -13,7 +13,8 @@ public class Presentation2 {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
 
-        IDao<Product> productDao = context.getBean(IDao.class);
+        // Spécifier quelle implémentation d'IDao utiliser avec @Qualifier
+        IDao<Product> productDao = context.getBean("productDaoImpl", IDao.class);
 
         Product product = new Product();
         product.setName("Produit 1");
